@@ -4,6 +4,7 @@ import { CharactersComponent } from './characters/characters.component';
 
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'characters', pathMatch:'full'},
     { path: 'characters', component: CharactersComponent },
     { path: 'characters/:id', component: CharacterComponent },
 ];
