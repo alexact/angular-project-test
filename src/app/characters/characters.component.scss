@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: row;
+  flex-wrap: wrap; 
+  gap: 10px; 
+  }
+.character {
+    flex: 1 1 calc(30% - 10px); 
+    box-sizing: border-box; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
