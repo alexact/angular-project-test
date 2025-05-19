@@ -1,5 +1,23 @@
+<input type="text" placeholder="Search by name" [(ngModel)]="nameFilter" />
+{{nameFilter}}
+
+  <select name="status" id="status" placeholder="Select status"  [(ngModel)]="statusFilter" >
+    <option [value]="status" *ngFor="let status of statuses" >{{status}}</option>
+  </select>
+ 
+  <select name="status" id="species" placeholder="Select status"  [(ngModel)]="speciesFilter" >
+    <option [value]="specie" *ngFor="let specie of species" >{{specie}}</option>
+  </select>
+
 <div class="container">
-    <div class="character" *ngFor="let character of characters">
-      <app-card [title]="character.name" [imageUrl]="character.image" [description]="'<strong>Location: </strong>' + character.location.name" (clickImg)="goToCharacter(character)"></app-card>
-    </div>
+  <ng-container *ngIf="characters | filter:'name':nameFilter | filter:'status': statusFilter | filter:'species': speciesFilter as filtered">
+    <ng-container *ngIf="filtered.length">
+      <div class="character" *ngFor="let character of filtered">
+        <app-card [title]="character.name" [imageUrl]="character.image" [description]="'<strong>Location: </strong>' + character.location.name" (clickImg)="goToCharacter(character)"></app-card>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!filtered.length">
+      <p>Not Results found</p>
+    </ng-container>
+  </ng-container>    
   </div>
